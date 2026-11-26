@@ -126,6 +126,77 @@
   .headline strong{display:block;font-size:1.16rem;line-height:1.5;font-weight:800}
   .headline span.sub{display:block;margin-top:6px;font-size:.95rem;color:#6b5a24}
 
+  /* ── 화면 탭 (뉴스 · 응원가) ─────────────── */
+  nav.tabs{margin-top:18px;position:relative}
+  .tabs-inner{
+    display:flex;gap:6px;max-width:520px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:999px;padding:5px;
+  }
+  .tab{
+    flex:1 1 0;min-height:46px;
+    border:0;border-radius:999px;background:transparent;
+    color:#e8f6ec;font:inherit;font-size:.95rem;font-weight:900;
+    cursor:pointer;white-space:nowrap;letter-spacing:-0.01em;
+  }
+  .tab[aria-selected="true"]{background:#fff;color:var(--green-deep)}
+  .tab:focus-visible{outline:3px solid #bff0cf;outline-offset:2px}
+
+  /* ── 응원가 가사집 ───────────────────────── */
+  #panel-cheer{padding:18px 14px 0}
+  .cheer-intro{
+    max-width:840px;margin:0 auto 16px;
+    background:linear-gradient(180deg,#fffdf3,#fff8e2);
+    border:2px solid #f0dfae;border-radius:var(--radius);
+    padding:16px 18px;box-shadow:var(--shadow);
+  }
+  .cheer-intro h2{font-size:1.26rem;margin:0 0 8px}
+  .cheer-intro p{margin:0 0 8px;font-size:.96rem;color:#6b5a24;line-height:1.7}
+  .cheer-intro p:last-child{margin-bottom:0}
+  .cheer-list{max-width:840px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+  article.cheerbox{
+    background:var(--card);border:2px solid var(--line);
+    border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);
+  }
+  article.cheerbox.fav{
+    border-color:#f0c34a;
+    box-shadow:0 3px 0 rgba(200,150,0,.16), 0 10px 24px rgba(120,90,0,.10);
+  }
+  .cheer-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .cheer-team{font-size:1.08rem;font-weight:900;letter-spacing:-0.02em}
+  .badge-fav{
+    background:#ffeeb8;border:1px solid #f0d78a;color:#5c4300;
+    font-size:.78rem;font-weight:900;padding:3px 10px;border-radius:999px;
+  }
+  .song{margin-top:14px}
+  .song h3{
+    font-size:1.02rem;margin:0 0 3px;font-weight:900;
+    display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;
+  }
+  .song h3 .when{
+    font-size:.74rem;font-weight:800;color:var(--green-deep);
+    background:var(--green-soft);border:1px solid #bfe0cb;
+    border-radius:999px;padding:2px 9px;
+  }
+  .origin{font-size:.78rem;color:#7b8c81;margin:0 0 8px;line-height:1.5}
+  .lyric{
+    margin:0;padding:12px 14px;
+    background:#f2f7f2;border-left:5px solid var(--green);
+    border-radius:0 12px 12px 0;
+    font-size:1rem;line-height:1.85;color:var(--ink);
+  }
+  .chant{margin:12px 0 0;font-size:.95rem;color:var(--ink-soft)}
+  .chant b{color:var(--green-deep);font-weight:900;letter-spacing:.02em}
+  .cheer-note{
+    max-width:840px;margin:4px auto 0;
+    border:2px dashed #cfe2d4;border-radius:var(--radius);
+    background:#fbfdfb;padding:16px 18px;
+    font-size:.86rem;color:#6b7f72;line-height:1.7;
+  }
+  .cheer-note p{margin:0 0 6px}
+  .cheer-note p:last-child{margin-bottom:0}
+
   /* ── 팀 고르기 ───────────────────────────── */
   nav.filters{
     position:sticky; top:0; z-index:20;
@@ -260,6 +331,7 @@
     h1{font-size:2.5rem}
     nav.filters{padding:16px 24px 10px}
     main, .headline, section.nextup, section.past, footer{max-width:840px;margin-left:auto;margin-right:auto}
+    #panel-cheer{padding:22px 24px 0}
     main{padding:22px 24px 0}
     .headline{margin-top:-18px}
     section.nextup, section.past, footer{margin-top:26px}
@@ -286,9 +358,17 @@
   </div>
   <h1>오늘의 KBO 야구 뉴스</h1>
   <div class="date">📅 2026년 11월 27일 금요일</div>
-  <p class="lead">KBO 10개 구단 소식을 한 페이지에 모았어요. 영상도, 광고도, 댓글도 없어요.</p>
+  <p class="lead">KBO 10개 구단 소식과 응원가 가사집을 한 페이지에 모았어요. 영상도, 광고도, 댓글도 없어요.</p>
+  <nav class="tabs" aria-label="화면 고르기">
+   <div class="tabs-inner">
+    <button class="tab" type="button" data-panel="news" aria-selected="true">📰 오늘의 뉴스</button>
+    <button class="tab" type="button" data-panel="cheer" aria-selected="false">📣 응원가 가사집</button>
+   </div>
+  </nav>
  </div>
 </header>
+
+<div id="panel-news">
 
 <div class="headline">
   <span class="tag">오늘의 한 줄</span>
@@ -445,6 +525,145 @@
   <p>한국시리즈 MVP는 삼성 <b>구자욱</b> 선수였어요. 5경기에서 타율 5할(20타수 10안타), 1홈런, 6타점을 기록했어요.</p>
 </section>
 
+</div><!-- /panel-news -->
+
+<section id="panel-cheer" hidden aria-labelledby="cheer-title">
+
+ <div class="cheer-intro">
+  <h2 id="cheer-title">📣 KBO 10개 구단 응원가 가사집</h2>
+  <p>야구장에서 관중이 다 같이 부르는 노래예요. <b>가장 많이 부르는 부분(후렴)만</b> 짧게 담았어요.</p>
+  <p>괄호 안은 노래 사이에 크게 외치는 <b>구호</b>예요. 노래에 맞춰 같이 불러 보세요.</p>
+ </div>
+
+ <div class="cheer-list">
+
+  <article class="cheerbox fav">
+   <div class="cheer-head"><span class="badge-fav">⭐ 우리 팀</span><span class="cheer-team">🦁 삼성 라이온즈</span></div>
+   <div class="song">
+    <h3>엘도라도 <span class="when">8회에 불러요</span></h3>
+    <p class="origin">원곡: 굼베이 댄스 밴드 〈El Dorado〉</p>
+    <p class="lyric">오~오오오오오 최! 강! 삼! 성!<br>오~오오오오오 최! 강! 삼! 성!<br>최강삼성 승리하리라~ 오오오 오오오오오오<br>최강삼성 승리하리라~ 오오오 오오오오오오</p>
+   </div>
+   <div class="song">
+    <h3>승리를 위해 <span class="when">첫 득점·역전</span></h3>
+    <p class="origin">팬들은 '짭도라도'라고도 불러요</p>
+    <p class="lyric">오~오오 오~ 최! 강! 삼! 성!<br>승리를 위해 달려가자 워~오오~<br>삼성 라이온즈 파이팅!</p>
+   </div>
+   <p class="chant">구호 — <b>최! 강! 삼! 성!</b></p>
+  </article>
+
+  <article class="cheerbox">
+   <div class="cheer-head"><span class="cheer-team">🐯 KIA 타이거즈</span></div>
+   <div class="song">
+    <h3>남행열차 <span class="when">9회, 이기고 있을 때</span></h3>
+    <p class="origin">원곡: 김수희 〈남행열차〉</p>
+    <p class="lyric">비 내리는 호남선 남행열차에 흔들리는 차창 너머로 (으쌰라 으쌰! 으쌰라 으쌰!)<br>빗물이 흐르고 (KIA!) 내 눈물도 흐르고 (KIA!)<br>잃어버린 첫사랑도 흐르네 (최강 KIA!)</p>
+   </div>
+   <p class="chant">구호 — <b>최! 강! KI! A!</b></p>
+  </article>
+
+  <article class="cheerbox">
+   <div class="cheer-head"><span class="cheer-team">⚾ LG 트윈스</span></div>
+   <div class="song">
+    <h3>서울의 아리아 <span class="when">공격할 때·승리 직전</span></h3>
+    <p class="origin">원곡: 안드레아 보첼리 〈Melodramma〉</p>
+    <p class="lyric">우리들의 함성을 여기에 모~아 (함성)<br>외~쳐라 무적 LG! 자 승리하라 LG!<br>LG의 승리 위해 다 함께 외쳐라!<br>무! 적! L! G!</p>
+   </div>
+   <div class="song">
+    <h3>승리의 노래 <span class="when">이기고 있을 때</span></h3>
+    <p class="origin">원곡: 스트라토바리우스 〈Forever〉</p>
+    <p class="lyric">승리의 함성을 다같이 외쳐라 LG의 승리를 위하여<br>승리의 함성을 다같이 외쳐라 LG의 승리를 위하여</p>
+   </div>
+   <p class="chant">구호 — <b>무! 적! L! G!</b></p>
+  </article>
+
+  <article class="cheerbox">
+   <div class="cheer-head"><span class="cheer-team">🐻 두산 베어스</span></div>
+   <div class="song">
+    <h3>승리를 위하여 <span class="when">큰 승리가 확실해질 때</span></h3>
+    <p class="origin">원곡: 랩소디 〈Emerald Sword〉</p>
+    <p class="lyric">최!강!두!산! 최!강!두!산!<br>두산의 승리를 위하여 오늘도 힘차게 외쳐라<br>나가자 싸우자 우리의 베어스<br>두산의 승리를 위~하여~!</p>
+   </div>
+   <p class="chant">구호 — <b>최! 강! 두! 산!</b></p>
+  </article>
+
+  <article class="cheerbox">
+   <div class="cheer-head"><span class="cheer-team">🧙 kt wiz</span></div>
+   <div class="song">
+    <h3>마법의 성 <span class="when">9회·승리 직후</span></h3>
+    <p class="origin">원곡: 더 클래식 〈마법의 성〉 (가사를 바꿔 불러요)</p>
+    <p class="lyric">가슴을 펼쳐라 당당하게 맞서라<br>외쳐보자 수원 kt wiz<br>뜨거운 열정과 마법 같은 힘으로<br>우리 하나되어 기적을 만들자</p>
+   </div>
+   <div class="song">
+    <h3>마법의 기적 <span class="when">2026년 새 응원가</span></h3>
+    <p class="origin">kt wiz 구단이 새로 만든 노래</p>
+    <p class="lyric">kt 우리의 열정 마법의 기적<br>승리하라 비상하라<br>하나되어 외쳐보자 승리 향해 외쳐보자<br>패기와 열정 We are kt</p>
+   </div>
+   <p class="chant">구호 — <b>K! T! 위! 즈! 비! 상! 하! 라!</b></p>
+  </article>
+
+  <article class="cheerbox">
+   <div class="cheer-head"><span class="cheer-team">🚀 SSG 랜더스</span></div>
+   <div class="song">
+    <h3>연안부두 <span class="when">8회, 손전등을 켜고</span></h3>
+    <p class="origin">원곡: 김트리오 〈연안부두〉</p>
+    <p class="lyric">어쩌다 한번~ 오는 저 배는~ 무슨 사연 싣고 오길래~ (S~S!G!)<br>오는 사람~ 가는 사람~ 마음마다 설레게 하나~ (S~S!G!)<br>부두에 꿈을 두고 떠나는 배야~ 갈매기 우는 마음 너는 알겠지~ (S~S!G!)<br>말해다오~ 말해다오~ 연안부두 떠나는 배야~</p>
+   </div>
+   <p class="chant">구호 — <b>S~S!G!</b></p>
+  </article>
+
+  <article class="cheerbox">
+   <div class="cheer-head"><span class="cheer-team">🕊️ 롯데 자이언츠</span></div>
+   <div class="song">
+    <h3>부산 갈매기 <span class="when">이길 것 같을 때</span></h3>
+    <p class="origin">원곡: 문성재 〈부산 갈매기〉</p>
+    <p class="lyric">지금은 그 어디서 (최~강 롯데!) 내 생각 잊었는가 (최~강 롯데!)<br>꽃처럼 어여쁜 그 이름도 고왔던 순이 순이야 (최~강 롯데!)<br>파도치는 부둣가에 지나간 일들이 가슴에 남았는데<br>부산 갈매기~ 부산 갈매기~ 너는 정녕 나를 잊었나</p>
+   </div>
+   <div class="song">
+    <h3>돌아와요 부산항에 <span class="when">부산 갈매기와 이어서</span></h3>
+    <p class="origin">원곡: 조용필 〈돌아와요 부산항에〉</p>
+    <p class="lyric">꽃 피는 동백섬에 봄이 왔건만 (최~강 롯데!)<br>형제 떠난 부산항에 갈매기만 슬피 우네 (최~강 롯데!)<br>오륙도 돌아가는 연락선마다 목메어 불러봐도<br>돌아와요 부산항에~ 그리운 내 형제여~</p>
+   </div>
+   <p class="chant">구호 — <b>최~강 롯데!</b></p>
+  </article>
+
+  <article class="cheerbox">
+   <div class="cheer-head"><span class="cheer-team">🦅 한화 이글스</span></div>
+   <div class="song">
+    <h3>나는 행복합니다 <span class="when">이기는 날 여러 번</span></h3>
+    <p class="origin">원곡: 윤항기 〈나는 행복합니다〉 (가사를 바꿔 불러요)</p>
+    <p class="lyric">나는 행복합니다 나는 행복합니다<br>나는 행복합니다 이글스라 행복합니다<br>나는 행복합니다 나는 행복합니다<br>나는 행복합니다 한화라서 행복합니다</p>
+   </div>
+   <p class="chant">구호 — <b>최! 강! 한! 화!</b></p>
+  </article>
+
+  <article class="cheerbox">
+   <div class="cheer-head"><span class="cheer-team">🦖 NC 다이노스</span></div>
+   <div class="song">
+    <h3>Come on Come on 마산스트리트여 <span class="when">홈에서 이겼을 때</span></h3>
+    <p class="origin">원곡: 노브레인 〈Come on Come on 마산스트리트여〉</p>
+    <p class="lyric">Come on! Come on! 마산 스트리트여!<br>Come on! Come on! 나의 나의 친구여!<br>Come on! Come on! 마산 스트리트여! 뛰어올라라!<br>(쥑인다!)</p>
+   </div>
+  </article>
+
+  <article class="cheerbox">
+   <div class="cheer-head"><span class="cheer-team">🦸 키움 히어로즈</span></div>
+   <div class="song">
+    <h3>영웅 출정가 <span class="when">이기고 있을 때 9회</span></h3>
+    <p class="origin">구단 응원가로 만든 노래 (크라잉넛)</p>
+    <p class="lyric">반만년 우뚝 설 우리 샛별이여<br>서울 히어로즈는 전진한다!<br>벗이여, 친구여, 나의 자랑이여!<br>서울 히어로즈는 승리한다!</p>
+   </div>
+  </article>
+
+ </div>
+
+ <div class="cheer-note">
+  <p><b>가사는 부르는 부분만 짧게 적었어요.</b> 노래 전체 가사와 음원은 각 구단의 응원가 안내에서 볼 수 있어요. 가사 저작권은 작사가와 구단에 있어요.</p>
+  <p>이 페이지에는 영상·광고·댓글을 넣지 않아요. 소리 없이 가사만 읽으며 따라 불러 보세요.</p>
+ </div>
+
+</section>
+
 <footer>
   <span class="mark">⚾ 매일 아침, 새 소식으로 채워져요</span>
   마지막 업데이트: 2026년 11월 27일 오전 1시 30분<br>
@@ -502,6 +721,23 @@ const TEAM_ORDER = ["KIA","두산","한화","SSG","삼성","LG","KT","롯데","K
   });
 
   applyFilter("all");
+
+  // 화면 전환: 오늘의 뉴스 ↔ 응원가 가사집
+  const tabs = Array.from(document.querySelectorAll("nav.tabs .tab"));
+  const panels = {
+    news: document.getElementById("panel-news"),
+    cheer: document.getElementById("panel-cheer")
+  };
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      const key = tab.dataset.panel;
+      tabs.forEach(t => t.setAttribute("aria-selected", String(t === tab)));
+      Object.keys(panels).forEach(k => {
+        if (panels[k]) panels[k].hidden = (k !== key);
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
 
   // 홈 화면 앱으로 열 때 오프라인에서도 보이게 (지원되는 브라우저만)
   if ("serviceWorker" in navigator) {
