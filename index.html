@@ -61,6 +61,7 @@
     position:relative;
     overflow:hidden;
   }
+  .hero-inner, .filters-inner{max-width:840px;margin:0 auto}
   header.hero::before{
     content:"";
     position:absolute;
@@ -257,10 +258,12 @@
     body{font-size:19px}
     header.hero{padding:36px 28px 34px}
     h1{font-size:2.5rem}
-    main{padding:20px 24px 0}
-    .headline{margin:-18px 24px 0}
     nav.filters{padding:16px 24px 10px}
-    section.nextup, section.past, footer{margin-left:24px;margin-right:24px}
+    main, .headline, section.nextup, section.past, footer{max-width:840px;margin-left:auto;margin-right:auto}
+    main{padding:22px 24px 0}
+    .headline{margin-top:-18px}
+    section.nextup, section.past, footer{margin-top:26px}
+    footer{margin-bottom:0}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -268,6 +271,7 @@
 <body>
 
 <header class="hero">
+ <div class="hero-inner">
   <div class="hero-top">
     <svg class="ball" viewBox="0 0 64 64" aria-hidden="true">
       <circle cx="32" cy="32" r="30" fill="#fffdf7"/>
@@ -283,6 +287,7 @@
   <h1>오늘의 KBO 야구 뉴스</h1>
   <div class="date">📅 2026년 11월 27일 금요일</div>
   <p class="lead">KBO 10개 구단 소식을 한 페이지에 모았어요. 영상도, 광고도, 댓글도 없어요.</p>
+ </div>
 </header>
 
 <div class="headline">
@@ -292,6 +297,7 @@
 </div>
 
 <nav class="filters" aria-label="팀별로 보기">
+ <div class="filters-inner">
   <p class="label">응원하는 팀을 눌러 보세요</p>
   <div class="chips" role="group" aria-label="팀 선택">
     <button class="chip" type="button" data-team="all" aria-pressed="true">전체</button>
@@ -305,6 +311,7 @@
     <button class="chip" type="button" data-team="롯데" aria-pressed="false">롯데</button>
     <button class="chip" type="button" data-team="KBO" aria-pressed="false">리그 전체</button>
   </div>
+ </div>
 </nav>
 
 <main id="news">
