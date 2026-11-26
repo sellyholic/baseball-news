@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="KBO 야구 뉴스">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#25914f"/>
+      <stop offset="1" stop-color="#145433"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#g)"/>
+  <circle cx="256" cy="256" r="152" fill="#fffdf7"/>
+  <g fill="none" stroke="#e0524a" stroke-width="14" stroke-linecap="round">
+    <path d="M158 158c40 30 60 65 60 98s-20 68-60 98"/>
+    <path d="M354 158c-40 30-60 65-60 98s20 68 60 98"/>
+  </g>
+  <g stroke="#e0524a" stroke-width="12" stroke-linecap="round">
+    <path d="M188 196l26 15M176 232l26 11M172 268l26 0M176 304l26-11M188 340l26-15"/>
+    <path d="M324 196l-26 15M336 232l-26 11M340 268l-26 0M336 304l-26-11M324 340l-26-15"/>
+  </g>
+</svg>

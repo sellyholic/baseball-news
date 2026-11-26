@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KBO 야구 뉴스 · 2026년 11월 27일</title>
+<meta name="description" content="초등 야구팬을 위한 KBO 뉴스 모음. 광고·영상·댓글 없이 기사 요약만 담았어요.">
+<meta name="theme-color" content="#1f7a45">
+<meta name="color-scheme" content="light">
+
+<!-- 홈 화면에 앱처럼 추가하기 위한 설정 -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="icon-180.png" sizes="180x180">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="KBO 뉴스">
+<meta name="application-name" content="KBO 뉴스">
+
+<style>
+  :root{
+    --paper:#f6faf4;
+    --card:#ffffff;
+    --ink:#16241b;
+    --ink-soft:#42594a;
+    --line:#dfeade;
+    --green:#1f7a45;
+    --green-deep:#145433;
+    --green-soft:#e7f4ea;
+    --stitch:#e0524a;
+    --clay:#b4651f;
+    --gold:#f4b400;
+    --radius:20px;
+    --shadow:0 3px 0 rgba(31,122,69,.10), 0 10px 24px rgba(20,60,40,.07);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+    font-size:18px;
+    line-height:1.75;
+    letter-spacing:-0.01em;
+    word-break:keep-all;
+    overflow-wrap:anywhere;
+    padding-bottom:56px;
+  }
+
+  /* ── 머리 부분 ───────────────────────────── */
+  header.hero{
+    background:
+      radial-gradient(120% 90% at 100% 0%, #2a9a58 0%, rgba(42,154,88,0) 55%),
+      linear-gradient(160deg,#1f7a45 0%,#145433 100%);
+    color:#fff;
+    padding:28px 20px 26px;
+    border-radius:0 0 26px 26px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;
+    right:-46px; top:-40px;
+    width:186px; height:186px;
+    border-radius:50%;
+    background:radial-gradient(circle at 34% 30%, #ffffff 0 52%, #f1e9e2 52% 62%, #ffffff 62% 100%);
+    opacity:.13;
+  }
+  .hero-top{display:flex;align-items:center;gap:10px;position:relative}
+  .ball{width:34px;height:34px;flex:0 0 auto}
+  .kicker{
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#d9f2e1;
+  }
+  h1{
+    font-size:2.05rem;
+    line-height:1.25;
+    margin:8px 0 6px;
+    font-weight:900;
+    letter-spacing:-0.03em;
+    position:relative;
+  }
+  .hero .date{
+    display:inline-flex;align-items:center;gap:7px;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.28);
+    padding:7px 14px;
+    border-radius:999px;
+    font-size:.95rem;
+    font-weight:700;
+    position:relative;
+  }
+  .hero p.lead{
+    margin:14px 0 0;
+    font-size:1rem;
+    color:#dff3e5;
+    line-height:1.65;
+    position:relative;
+  }
+
+  /* ── 오늘의 한 줄 ────────────────────────── */
+  .headline{
+    margin:-14px 14px 0;
+    background:linear-gradient(180deg,#fffdf3,#fff8e2);
+    border:2px solid #f0dfae;
+    border-radius:var(--radius);
+    padding:16px 18px;
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .headline .tag{
+    display:inline-block;
+    background:var(--stitch);color:#fff;
+    font-size:.74rem;font-weight:800;letter-spacing:.06em;
+    padding:4px 10px;border-radius:999px;
+    margin-bottom:8px;
+  }
+  .headline strong{display:block;font-size:1.16rem;line-height:1.5;font-weight:800}
+  .headline span.sub{display:block;margin-top:6px;font-size:.95rem;color:#6b5a24}
+
+  /* ── 팀 고르기 ───────────────────────────── */
+  nav.filters{
+    position:sticky; top:0; z-index:20;
+    background:rgba(246,250,244,.94);
+    backdrop-filter:saturate(150%) blur(8px);
+    padding:14px 14px 10px;
+    border-bottom:1px solid var(--line);
+    margin-top:20px;
+  }
+  nav.filters .label{font-size:.82rem;font-weight:800;color:var(--ink-soft);margin:0 0 8px 4px;letter-spacing:.02em}
+  .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{
+    flex:0 0 auto;
+    border:2px solid var(--line);
+    background:#fff;
+    color:var(--ink-soft);
+    font:inherit;font-size:.92rem;font-weight:800;
+    padding:8px 15px;border-radius:999px;
+    cursor:pointer;
+    min-height:44px;
+    white-space:nowrap;
+  }
+  .chip[aria-pressed="true"]{
+    background:var(--green);border-color:var(--green);color:#fff;
+  }
+  .chip:focus-visible{outline:3px solid #7fc49a;outline-offset:2px}
+
+  /* ── 기사 카드 ───────────────────────────── */
+  main{padding:16px 14px 0;display:flex;flex-direction:column;gap:16px}
+  article.card{
+    background:var(--card);
+    border:2px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px 18px 18px;
+    box-shadow:var(--shadow);
+    scroll-margin-top:96px;
+  }
+  article.card[hidden]{display:none}
+  .card-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+  .num{
+    background:var(--green-soft);color:var(--green-deep);
+    font-size:.82rem;font-weight:900;
+    width:28px;height:28px;border-radius:9px;
+    display:inline-flex;align-items:center;justify-content:center;
+    flex:0 0 auto;
+  }
+  .team{
+    font-size:.78rem;font-weight:900;letter-spacing:.02em;
+    color:#7a3d00;background:#fff2df;border:1px solid #f4d9b3;
+    padding:3px 10px;border-radius:999px;
+  }
+  .team.kbo{color:#0f4f36;background:#e7f4ea;border-color:#bfe0cb}
+  h2{
+    font-size:1.32rem;
+    line-height:1.4;
+    font-weight:900;
+    margin:8px 0 10px;
+    letter-spacing:-0.02em;
+  }
+  .card p{font-size:1.02rem;color:var(--ink-soft);margin:0 0 12px}
+  .card p:last-of-type{margin-bottom:0}
+  .card p b, .card p strong{color:var(--ink);font-weight:800}
+
+  .points{
+    background:var(--green-soft);
+    border-radius:14px;
+    padding:13px 15px 13px 15px;
+    margin:0 0 12px;
+  }
+  .points h3{
+    font-size:.8rem;letter-spacing:.08em;font-weight:900;
+    color:var(--green-deep);
+    margin:0 0 7px;
+  }
+  .points ul{margin:0;padding-left:1.05em}
+  .points li{font-size:.97rem;line-height:1.65;margin:0 0 5px;color:var(--ink)}
+  .points li:last-child{margin-bottom:0}
+  .points li::marker{color:var(--green)}
+
+  .easy{
+    border-left:5px solid var(--gold);
+    background:#fffbeb;
+    border-radius:0 12px 12px 0;
+    padding:10px 14px;
+    font-size:.96rem;
+    color:#6b5210;
+  }
+  .easy strong{color:#4a3a05}
+
+  .source{
+    margin-top:12px;
+    font-size:.8rem;
+    color:#7b8c81;
+    display:flex;flex-wrap:wrap;gap:6px;align-items:center;
+  }
+  .source span.dot{color:#c3d2c7}
+
+  /* ── 예고 · 지난 소식 ─────────────────────── */
+  section.nextup, section.past{
+    margin:22px 14px 0;
+    border-radius:var(--radius);
+    padding:18px;
+    border:2px dashed #cfe2d4;
+    background:#fbfdfb;
+  }
+  section.nextup h2, section.past h2{font-size:1.18rem;margin:0 0 8px}
+  section.nextup p, section.past p{font-size:.98rem;color:var(--ink-soft);margin:0 0 10px}
+  section.nextup p:last-child, section.past p:last-child{margin-bottom:0}
+  .pill-date{
+    display:inline-block;background:#fff0cc;border:1px solid #f2d894;
+    color:#6b4f00;font-weight:900;font-size:.9rem;
+    padding:3px 11px;border-radius:999px;margin-bottom:8px;
+  }
+
+  /* ── 꼬리 ───────────────────────────────── */
+  footer{
+    margin:26px 14px 0;
+    padding:20px 18px 8px;
+    border-top:1px solid var(--line);
+    color:#6b7f72;
+    font-size:.85rem;
+    line-height:1.7;
+    text-align:center;
+  }
+  footer .mark{font-weight:900;color:var(--green-deep);font-size:.95rem;display:block;margin-bottom:6px}
+  footer .note{display:block;margin-top:10px;color:#8b9c90;font-size:.78rem}
+
+  @media (min-width:620px){
+    body{font-size:19px}
+    header.hero{padding:36px 28px 34px}
+    h1{font-size:2.5rem}
+    main{padding:20px 24px 0}
+    .headline{margin:-18px 24px 0}
+    nav.filters{padding:16px 24px 10px}
+    section.nextup, section.past, footer{margin-left:24px;margin-right:24px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-top">
+    <svg class="ball" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="#fffdf7"/>
+      <path d="M12 12c8 6 12 13 12 20s-4 14-12 20" fill="none" stroke="#e0524a" stroke-width="3" stroke-linecap="round"/>
+      <path d="M52 12c-8 6-12 13-12 20s4 14 12 20" fill="none" stroke="#e0524a" stroke-width="3" stroke-linecap="round"/>
+      <g stroke="#e0524a" stroke-width="2.6" stroke-linecap="round">
+        <path d="M18 20l5 3M16 27l5 2M15 34l5 0M16 41l5-2M18 48l5-3"/>
+        <path d="M46 20l-5 3M48 27l-5 2M49 34l-5 0M48 41l-5-2M46 48l-5-3"/>
+      </g>
+    </svg>
+    <span class="kicker">KBO NEWS for KIDS</span>
+  </div>
+  <h1>오늘의 KBO 야구 뉴스</h1>
+  <div class="date">📅 2026년 11월 27일 금요일</div>
+  <p class="lead">KBO 10개 구단 소식을 한 페이지에 모았어요. 영상도, 광고도, 댓글도 없어요.</p>
+</header>
+
+<div class="headline">
+  <span class="tag">오늘의 한 줄</span>
+  <strong>어제 열린 KBO 시상식에서 KIA 김도영 선수가 최연소로 두 번째 MVP가 됐어요!</strong>
+  <span class="sub">홈런상·장타율상·3루수 수비상까지, 트로피를 네 개나 들었어요.</span>
+</div>
+
+<nav class="filters" aria-label="팀별로 보기">
+  <p class="label">응원하는 팀을 눌러 보세요</p>
+  <div class="chips" role="group" aria-label="팀 선택">
+    <button class="chip" type="button" data-team="all" aria-pressed="true">전체</button>
+    <button class="chip" type="button" data-team="KIA" aria-pressed="false">KIA</button>
+    <button class="chip" type="button" data-team="두산" aria-pressed="false">두산</button>
+    <button class="chip" type="button" data-team="한화" aria-pressed="false">한화</button>
+    <button class="chip" type="button" data-team="SSG" aria-pressed="false">SSG</button>
+    <button class="chip" type="button" data-team="삼성" aria-pressed="false">삼성</button>
+    <button class="chip" type="button" data-team="LG" aria-pressed="false">LG</button>
+    <button class="chip" type="button" data-team="KT" aria-pressed="false">KT</button>
+    <button class="chip" type="button" data-team="롯데" aria-pressed="false">롯데</button>
+    <button class="chip" type="button" data-team="KBO" aria-pressed="false">리그 전체</button>
+  </div>
+</nav>
+
+<main id="news">
+
+  <article class="card" data-teams="KIA 두산">
+    <div class="card-head"><span class="num">1</span><span class="team">KIA</span><span class="team">두산</span></div>
+    <h2>🏆 김도영, 최연소 두 번째 MVP</h2>
+    <p>11월 26일 서울 롯데호텔 월드에서 <b>2026 신한 SOL KBO 시상식</b>이 열렸어요. 정규시즌 최고 선수에게 주는 MVP는 KIA 타이거즈 <b>김도영</b> 선수가 받았어요.</p>
+    <p>기자 136명 중 <b>80명(58.8%)</b>이 김도영을 1위로 뽑았어요. 두산 곽빈(34표)을 46표 차로 앞섰고, LG 오스틴 딘(7표)이 3위였어요. 2024년에 이어 두 번째 MVP인데, 이승엽 감독이 세운 <b>최연소 2회 MVP</b> 기록을 19일이나 앞당겼어요. 두 번 이상 MVP를 받은 선수는 역대 6명뿐이에요.</p>
+    <div class="points">
+      <h3>숫자로 보기</h3>
+      <ul>
+        <li>135경기 타율 <b>0.308</b>, <b>45홈런</b>, <b>118타점</b></li>
+        <li>출루율 0.413 + 장타율 0.647 = OPS <b>1.060</b></li>
+        <li>홈런상 · 장타율상 · 3루수 수비상 · MVP → 무대에 <b>네 번</b> 올랐어요</li>
+      </ul>
+    </div>
+    <p class="easy"><strong>쉽게 말하면</strong> — 홈런도 1등, 장타율도 1등, 3루 수비도 1등, 그리고 MVP까지. 상품으로 <b>기아 EV5</b> 자동차도 받았대요.</p>
+    <div class="source"><span>출처</span><span>·</span><span>KBO 시상식 결과 보도 (2026.11.26)</span></div>
+  </article>
+
+  <article class="card" data-teams="한화">
+    <div class="card-head"><span class="num">2</span><span class="team">한화</span></div>
+    <h2>🌟 신인상은 한화 포수 허인서 — 16년 만에 포수가 신인왕</h2>
+    <p>올해 처음 1군에서 뛴 선수에게 주는 신인상은 한화 이글스 <b>포수 허인서</b> 선수가 받았어요. 136표 중 <b>92표(67.6%)</b>를 얻어 SSG 김민준(20표)을 제쳤어요.</p>
+    <p>포수가 신인상을 받은 건 2010년 두산 양의지 이후 <b>16년 만</b>이고, 리그 역대 네 번째예요. 같은 날 <b>포수 수비상</b>까지 받아서 공격과 수비를 모두 인정받았어요.</p>
+    <div class="points">
+      <h3>숫자로 보기</h3>
+      <ul>
+        <li>130경기 타율 <b>0.283</b>, <b>20홈런</b>, <b>79타점</b></li>
+        <li>신인상 트로피와 상금 300만원</li>
+      </ul>
+    </div>
+    <p class="easy"><strong>포수가 뭐예요?</strong> — 투수의 공을 받는 자리예요. 경기 전체를 보면서 사인을 내는, 팀의 '야구 두뇌'라고 불러요.</p>
+    <div class="source"><span>출처</span><span>·</span><span>KBO 시상식 결과 보도 (2026.11.26)</span></div>
+  </article>
+
+  <article class="card" data-teams="두산 LG KT 삼성">
+    <div class="card-head"><span class="num">3</span><span class="team">두산</span><span class="team">LG</span><span class="team">KT</span></div>
+    <h2>🔥 투수 1등들 — 곽빈은 트로피 3개, 다승왕은 공동</h2>
+    <p>MVP 투표 2위였던 두산 <b>곽빈</b> 선수는 투수 부문에서만 트로피를 세 개 들었어요. 평균자책점 <b>2.24</b>와 탈삼진 <b>197개</b>로 두 부문 1위, 여기에 <b>투수 수비상</b>까지 받았어요.</p>
+    <div class="points">
+      <h3>올해의 투수 기록들</h3>
+      <ul>
+        <li>다승왕: LG 임찬규 · KT 고영표, 나란히 <b>15승</b>으로 공동 1위</li>
+        <li>세이브왕: 삼성 김재윤, <b>35세이브</b>로 데뷔 첫 1위</li>
+        <li>홀드왕: KT 스기모토 <b>25홀드</b> / 승률왕: KT 소형준 <b>0.769</b></li>
+      </ul>
+    </div>
+    <p class="easy"><strong>세이브와 홀드가 뭐예요?</strong> — 팀이 이기고 있는 마지막 순간에 나와서 점수를 지키면 <b>세이브</b>, 이기고 있는 중간에 나와서 지키면 <b>홀드</b>예요.</p>
+    <div class="source"><span>출처</span><span>·</span><span>KBO 시상식 결과 보도 (2026.11.26)</span></div>
+  </article>
+
+  <article class="card" data-teams="삼성 롯데 KT LG KBO">
+    <div class="card-head"><span class="num">4</span><span class="team kbo">리그 전체</span></div>
+    <h2>🏅 타격 1등들 — 구자욱 2관왕, 레이예스 211안타</h2>
+    <p>타자들의 1등도 모두 가려졌어요. 삼성 <b>구자욱</b>은 타율 <b>0.371</b>, 출루율 <b>0.458</b>로 두 부문을 동시에 차지했어요. 한 시즌에 안타를 가장 많이 친 선수는 롯데 <b>빅터 레이예스</b>, <b>211안타</b>였어요.</p>
+    <div class="points">
+      <h3>부문별 1위</h3>
+      <ul>
+        <li>타점왕: KT 샘 힐리어드 <b>139타점</b></li>
+        <li>득점왕: KT 최원준 <b>125득점</b> / 도루왕: 롯데 황성빈 <b>55도루</b></li>
+        <li>올해 새로 생긴 <b>유틸리티 수비상</b> 첫 수상자는 LG 구본혁 — 여러 포지션을 다 잘하는 선수에게 주는 상이에요</li>
+      </ul>
+    </div>
+    <p class="easy"><strong>타율·출루율·장타율?</strong> — 타율은 안타 비율, 출루율은 (안타+볼넷)으로 살아 나간 비율, 장타율은 밑타의 '무게'까지 계산한 비율이에요. 셋을 더하면 OPS가 돼요.</p>
+    <div class="source"><span>출처</span><span>·</span><span>KBO 시상식 결과 보도 (2026.11.26)</span></div>
+  </article>
+
+  <article class="card" data-teams="두산">
+    <div class="card-head"><span class="num">5</span><span class="team">두산</span></div>
+    <h2>💰 FA 시장이 열렸어요 — 양의지, 두산에 남는다</h2>
+    <p>11월 17일부터 FA(자유계약선수) 시장이 열렸어요. FA는 다른 팀과 자유롭게 계약할 수 있는 선수라는 뜻이에요. 그 첫날, 두산 베어스가 베테랑 포수 <b>양의지</b>와 <b>2년 최대 55억 원</b>에 계약했어요.</p>
+    <div class="points">
+      <h3>계약 내용</h3>
+      <ul>
+        <li>계약금 <b>40억 원</b> + 연봉 총액 10억 원 + 인센티브 5억 원</li>
+        <li>두산으로 돌아온 뒤 4년 동안 타율 0.301, 77홈런, 330타점</li>
+        <li>지난해에는 통산 <b>10번째 골든글러브</b>를 받아 역대 최다 타이 기록을 세웠어요</li>
+      </ul>
+    </div>
+    <p class="easy"><strong>왜 중요한가요?</strong> — 올겨울 FA 시장의 첫 계약이었어요. 이 계약을 기준으로 남은 포수들의 몸값이 올라갈 거라는 이야기가 나와요.</p>
+    <div class="source"><span>출처</span><span>·</span><span>연합뉴스 보도 (2026.11.17)</span></div>
+  </article>
+
+  <article class="card" data-teams="SSG">
+    <div class="card-head"><span class="num">6</span><span class="team">SSG</span></div>
+    <h2>🧡 SSG는 '집토끼'를 지켰어요 — 최지훈 67억</h2>
+    <p>'집토끼 단속'은 우리 팀 선수를 다른 팀에 빼앗기지 않고 잡아두는 일을 말해요. SSG 랜더스가 사흘 동안 세 명과 계약했어요.</p>
+    <div class="points">
+      <h3>세 명의 계약</h3>
+      <ul>
+        <li><b>최지훈</b> (11/18): 4년 총액 <b>67억 원</b> — 계약금 38억, 연봉 20억, 옵션 9억</li>
+        <li><b>오태곤</b> (11/17): 3년 총액 <b>11억 원</b> — 1루와 외야를 다 하는 만능 선수</li>
+        <li><b>문승원</b> (11/22): 2+1년 최대 <b>15억 원</b> — 올해 62경기 17홀드, 평균자책점 3.45</li>
+      </ul>
+    </div>
+    <p>최지훈은 데뷔 때부터 <b>7년 연속 100안타와 두 자릿수 도루</b>를 해냈고, 올해는 141경기에서 개인 최다인 13홈런을 쳤어요. 외야수 중 가장 많은 1,196이닝을 뛰었고요. 계약하면서 인천 지역을 위해 <b>1억 원을 기부</b>하겠다고 했어요.</p>
+    <p class="easy"><strong>기억할 것</strong> — SSG는 2028년에 새 홈구장 '청라돔'으로 옮겨요. 최지훈은 그때까지 SSG 유니폼을 입고 뛰게 됐어요.</p>
+    <div class="source"><span>출처</span><span>·</span><span>SSG 랜더스 구단 발표 · 연합뉴스 (2026.11.17~22)</span></div>
+  </article>
+
+  <article class="card" data-teams="한화">
+    <div class="card-head"><span class="num">7</span><span class="team">한화</span></div>
+    <h2>⚾ 한화, 외국인 투수 세 명을 모두 채웠어요</h2>
+    <p>한화 이글스는 11월 22일, 메이저리그 탬파베이에서 뛰던 우완 투수 <b>제시 숄턴스</b>(32)를 영입했어요. 총액 <b>87만 5천 달러</b>(약 11억 7천만 원)예요. 이로써 내년 시즌에 쓸 외국인 투수 세 자리를 다 채웠어요.</p>
+    <div class="points">
+      <h3>한화의 외국인 투수진</h3>
+      <ul>
+        <li><b>제시 숄턴스</b> (11/22): 올해 MLB 47⅔이닝 5승 3패 평균자책점 4.34, 최고 시속 154km</li>
+        <li><b>트로이 왓슨</b> (11/11): 총액 100만 달러, 최고 시속 157km의 강속구 투수</li>
+        <li><b>왕옌청</b>: 아시아쿼터 좌완, 총액 30만 달러에 재계약 — 올해 팀 내 최다 11승</li>
+      </ul>
+    </div>
+    <p class="easy"><strong>알아 두기</strong> — 한화는 새 감독님과 함께 내년 시즌을 준비해요. 올해는 9위로 시즌을 마쳤기 때문에, 투수진을 일찍 만든 거예요.</p>
+    <div class="source"><span>출처</span><span>·</span><span>연합뉴스 · 한화 이글스 발표 (2026.11.22)</span></div>
+  </article>
+
+</main>
+
+<section class="nextup" aria-label="다음에 열리는 야구 행사">
+  <span class="pill-date">12월 8일 (화)</span>
+  <h2>📅 다음은 골든글러브 시상식</h2>
+  <p>골든글러브는 포지션별로 가장 잘한 선수 10명에게 주는 상이에요. 올해 후보는 모두 <b>79명</b>이 뽑혔고, 수상자는 <b>12월 8일</b> 서울 롯데호텔 월드에서 열리는 시상식에서 공개돼요.</p>
+  <p>후보는 투수 25명, 포수 7명, 1루수 5명, 2루수 6명, 3루수 5명, 유격수 7명, 외야수 21명, 지명타자 3명이에요. LG·삼성·KT가 각각 10명으로 가장 많고, 한화는 <b>모든 포지션</b>에서 후보를 냈어요.</p>
+</section>
+
+<section class="past" aria-label="이번 가을에 있었던 일">
+  <h2>🍂 이번 가을에 있었던 일</h2>
+  <p>11월 8일, <b>삼성 라이온즈</b>가 한국시리즈에서 KT 위즈를 꺾고 <b>12년 만에 우승</b>했어요(통산 9번째). 정규시즌 1위 KT를 상대로 1차전을 지고도 내리 네 경기를 이겨서, 창단 첫 '업셋 우승'이었어요. 마지막 5차전은 12대 1.</p>
+  <p>한국시리즈 MVP는 삼성 <b>구자욱</b> 선수였어요. 5경기에서 타율 5할(20타수 10안타), 1홈런, 6타점을 기록했어요.</p>
+</section>
+
+<footer>
+  <span class="mark">⚾ 매일 아침, 새 소식으로 채워져요</span>
+  마지막 업데이트: 2026년 11월 27일 오전 1시 30분<br>
+  광고 · 영상 · 댓글 없이 뉴스 요약만 담았어요.
+  <span class="note">적힌 내용은 위에 표시한 날짜의 보도와 구단 발표를 보고 직접 정리한 거예요. 사진과 영상은 넣지 않았어요.</span>
+</footer>
+
+<script>
+/* ============================================================
+   여기 두 줄만 바꾸면 응원하는 팀을 강조할 수 있어요.
+   FAVORITE_TEAM 에 팀 이름을 넣으면 그 팀 기사가 맨 위로 올라와요.
+   예) const FAVORITE_TEAM = "한화";
+   ============================================================ */
+const FAVORITE_TEAM = "";
+const TEAM_ORDER = ["KIA","두산","한화","SSG","삼성","LG","KT","롯데","KBO"];
+
+(function () {
+  const cards = Array.from(document.querySelectorAll("#news .card"));
+  const chips = Array.from(document.querySelectorAll(".chip"));
+  const news = document.getElementById("news");
+
+  // 응원 팀 강조: 맨 위로 올리고 금색 테두리
+  if (FAVORITE_TEAM) {
+    cards
+      .filter(c => (c.dataset.teams || "").split(/\s+/).includes(FAVORITE_TEAM))
+      .forEach(c => {
+        c.style.borderColor = "#f0c34a";
+        c.style.boxShadow = "0 3px 0 rgba(200,150,0,.16), 0 10px 24px rgba(120,90,0,.10)";
+        const head = c.querySelector(".card-head");
+        if (head) {
+          const badge = document.createElement("span");
+          badge.className = "team";
+          badge.style.cssText = "color:#5c4300;background:#ffeeb8;border-color:#f0d78a";
+          badge.textContent = "⭐ 우리 팀";
+          head.prepend(badge);
+        }
+        news.prepend(c);
+      });
+  }
+
+  // 팀 필터
+  function applyFilter(team) {
+    cards.forEach(c => {
+      const list = (c.dataset.teams || "").split(/\s+/).filter(Boolean);
+      c.hidden = !(team === "all" || list.includes(team));
+    });
+    chips.forEach(ch => ch.setAttribute("aria-pressed", String(ch.dataset.team === team)));
+  }
+
+  chips.forEach(ch => {
+    ch.addEventListener("click", () => {
+      applyFilter(ch.dataset.team);
+      window.scrollTo({ top: document.querySelector("nav.filters").offsetTop - 4, behavior: "smooth" });
+    });
+  });
+
+  applyFilter("all");
+
+  // 홈 화면 앱으로 열 때 오프라인에서도 보이게 (지원되는 브라우저만)
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    });
+  }
+})();
+</script>
+</body>
+</html>
